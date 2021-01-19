@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^(www\.)?cafeoperations\.ir [NC]
+RewriteRule !^subdir/ /wwwroot%{REQUEST_URI} [L,NC]
