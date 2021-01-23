@@ -2,14 +2,15 @@
     "name": "vsg24/soda",
     "type": "project",
     "require": {
-        "php": ">=7.1",
+        "php": "^8.0.1",
         "ext-json": "*",
         "symfony/http-foundation": "^3.2",
         "phroute/phroute": "^2.1",
         "jenssegers/blade": "^1.1",
         "filp/whoops": "^2.1",
-        "illuminate/database": "^5.7",
-        "robmorgan/phinx": "^0.10.6",
+        "symfony/console": "^5.1.4",
+		"illuminate/database": "^8.23.1",
+		"robmorgan/phinx": "^0.12.4",
         "nesbot/carbon": "^2.16",
         "firebase/php-jwt": "^5.2.0"
     },

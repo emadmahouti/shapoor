@@ -12,7 +12,7 @@ class Dashboard extends Controller
     public function beforeActionExecution($action_name, $action_arguments)
     {
         parent::beforeActionExecution($action_name, $action_arguments);
-
+		
         $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         $jwt = extractAuthorizationToken($user);
 
