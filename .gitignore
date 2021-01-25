@@ -1,5 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/laravel,phpstorm
 # Edit at https://www.toptal.com/developers/gitignore?templates=laravel,phpstorm
+##custom 
+wwwroot/cache
+
+app.config.php
+composer.lock
 
 ### Laravel ###
 /vendor/
