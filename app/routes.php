@@ -4,8 +4,6 @@ use Phroute\Phroute\RouteCollector;
 
 $router = new RouteCollector();
 
-$router->get('/guideline/github/{id}', ['App\Controllers\Guideline\Github', 'index']);
-
 $router->get('/', ['App\Controllers\HomeController', 'index']);
 
 $router->group(['prefix' => 'auth'], function ($router) {
