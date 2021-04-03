@@ -10,6 +10,11 @@
             top: 1rem;
         }
 
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
         .chrome-extension-mutihighlight {
             padding: 0 !important;
             box-shadow: none !important;
@@ -59,7 +64,8 @@
                                id="list-{{$i}}"
                                href="#{{$data[$i]->phone_number}}"
                                v-on:click="selectUser({{$i}}, {{$data[$i]}})">
-                                {{$data[$i]->phone_number}}
+                                <span>{% phoneNumberPattern({{($data[$i]->phone_number)}}) %}</span>
+                                <span><small>{{$data[$i]->name}}</small></span>
                             </a>
                         @endfor
                     </div>
@@ -100,14 +106,15 @@
             mounted: function () {
                 document.getElementById('list-0').click();
             },
+            mixins: [mixin],
             methods: {
                 selectUser: function (index, user) {
-                    if(index !== this.userIndex) {
+                    if (index !== this.userIndex) {
                         this.userIndex = index;
                         this.getData(user.id);
                     }
                 },
-                reload: function() {
+                reload: function () {
                     var tempIndex = this.userIndex;
                     this.userIndex = -1;
                     this.messages = [];

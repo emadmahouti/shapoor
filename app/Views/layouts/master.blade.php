@@ -37,6 +37,16 @@
     <script src='https://cdn.rawgit.com/lcdsantos/menuspy/fa5bc803/dist/menuspy.min.js'></script>
 
     <script>
+        let mixin = {
+            methods: {
+                phoneNumberPattern: function(phone) {
+                    return phone;
+                }
+            }
+        }
+    </script>
+
+    <script>
         $.notify.addStyle('notif', {
             html: "<div><span data-notify-text/></div>",
             classes: {
