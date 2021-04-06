@@ -43,6 +43,10 @@
                                    v-model:value="form.code">
                         </div>
 
+                        <div class="form-group rtl" >
+                            <a href="https://cafebazaar.slack.com/archives/G016CFY954N/p1610891777005900" target="_blank">اطلاعات ورود</a>
+                        </div>
+
                         <div class="mt-5">
                             <hr>
                             <button type="button" class="btn btn-primary form-control" @click="submit">ورود</button>
