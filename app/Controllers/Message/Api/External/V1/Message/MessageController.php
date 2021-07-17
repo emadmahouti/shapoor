@@ -8,6 +8,7 @@ use App\Models\UserAuth;
 use App\Models\UserTrust;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Soda\Core\Http\Controller;
+use Carbon\Carbon;
 
 class MessageController extends Controller
 {
@@ -32,7 +33,6 @@ class MessageController extends Controller
                     return true;
                 }
             }
-
         } catch (ModelNotFoundException $e) {
             return $this->echoNormal([
                 'status' => $e->getMessage()
