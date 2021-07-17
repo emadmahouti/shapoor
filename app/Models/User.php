@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $active
  * @property integer $last_verify_code
  * @property string $last_verify_code_date
+ * @property integer $last_seen
  * @property string $created_at
  * @property string $updated_at
  */

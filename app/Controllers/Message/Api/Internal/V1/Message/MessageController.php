@@ -79,6 +79,7 @@ class MessageController extends Controller
             }
         }
 
+        $this->user->last_seen = Carbon::now()->timestamp;
         $data['status'] = 'OK';
 
         return $this->echoNormal($data);
