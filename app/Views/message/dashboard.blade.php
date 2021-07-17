@@ -66,7 +66,7 @@
                                v-on:click="selectUser({{$i}}, {{$data[$i]}})">
                                 <span>{% phoneNumberPattern({{($data[$i]->phone_number)}}) %}</span>
                                 <span><small>{{$data[$i]->name}}</small></span>
-                                <span class="text-muted"><small>{{getSmartLastSeen($data[$i]->last_seen)}}</small></span>
+                                <span class="badge bg-secondary"><small>{{getSmartLastSeen($data[$i]->last_seen)}}</small></span>
                             </a>
                         @endfor
                     </div>
