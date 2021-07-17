@@ -2,6 +2,7 @@
 
 use Soda\Core\Database\MongoDBClient;
 use Soda\Core\Presentation\View;
+use Carbon\Carbon;
 
 function redirect($url) {
     ob_end_clean();
@@ -235,6 +236,13 @@ function toRelativeTimeWithDepth($unixtimestamp, $depth = 1)
         $count_depth++;
     }
     return $output.($timediff<0?$suffix2:$suffix1);
+}
+
+function getSmartLastSeen($timestamp) {
+    $dt = Carbon::now()->timestamp;
+    $future = $dt->copy()->addMinutes(20)->timestamp;
+
+    return ($future < $timestamp) ? "آفلاین" : "آنلاین";
 }
 
 function getSmartPersianDate($expression, $persianNumbers = true)
