@@ -238,11 +238,11 @@ function toRelativeTimeWithDepth($unixtimestamp, $depth = 1)
     return $output.($timediff<0?$suffix2:$suffix1);
 }
 
-function getSmartLastSeen($timestamp) {
-    $dt = Carbon::now()->timestamp;
-    $future = $dt->copy()->addMinutes(20)->timestamp;
+function getSmartLastSeen($lstSeen) {
+    $dt = Carbon::now();
+    $before = $dt->addMinutes(-20)->timestamp;
 
-    return ($future < $timestamp) ? "آفلاین" : "آنلاین";
+    return ($before > $lstSeen) ? "off" : "on";
 }
 
 function getSmartPersianDate($expression, $persianNumbers = true)
