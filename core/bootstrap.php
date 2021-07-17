@@ -22,6 +22,10 @@ if (!file_exists($file = __DIR__ . '/../app.config.php')) {
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
 	
+	if (!is_writable(session_save_path())) {
+		echo 'Session path "'.session_save_path().'" is not writable for PHP!'; 
+	}
+	
         $whoops = new \Whoops\Run;
         $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
         if (Whoops\Util\Misc::isAjaxRequest()) {
@@ -29,10 +33,6 @@ if (!file_exists($file = __DIR__ . '/../app.config.php')) {
         }
         $whoops->register();
     }
-}
-
-if (!is_writable(session_save_path())) {
-	echo 'Session path "'.session_save_path().'" is not writable for PHP!'; 
 }
 
 // setup Illuminate\Database
@@ -57,7 +57,7 @@ require_once PROJECT_ROOT_ABS_PATH . '/app/Utils/helpers.php';
 
 @ini_set("suhosin.session.cryptdocroot", "Off");
 @ini_set("suhosin.cookie.cryptdocroot", "Off");
-@ini_set("session.cookie_domain", MAIN_DOMAIN);
+@ini_set("session.cookie_domain", ".cafeoperations.ir");
 @session_start();
 
 if(!GZIP_ENABLED || !ob_start("ob_gzhandler")) ob_start();
