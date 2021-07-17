@@ -82,9 +82,6 @@ class MessageController extends Controller
         $message->text = $data['text'];
         $message->phone_number = $data['phone_number'];
 
-        $this->user->last_seen = Carbon::now()->timestamp;
-        $this->user->save();
-
         $saved = $message->save();
 
         return $this->echoNormal(
