@@ -244,10 +244,10 @@ function getSmartLastSeen($lstSeen) {
     $alongTimeAgo = $dt->addHours(-24)->timestamp;
 
     if($alongTimeAgo > $lstSeen)
-        if($before > $lstSeen)
+		return -1;
+	else
+		if($before > $lstSeen)
             return 0;
-        else
-            return -1;
 
         return 1;
 }
