@@ -73,6 +73,7 @@ class MessageController extends Controller
                 if ($trustUser->trust_user_id = 1) {
                     $user = $trustUser->user;
 
+                    $data['user'] = clone $user;
                     $data['data'] = $user->limitMessages;
                 }
             }
