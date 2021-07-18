@@ -116,7 +116,6 @@
                     }
                 },
                 calLastSeen: function(state) {
-					console.log(state);
                     switch (state){
 						case 1:
                             return "on"
