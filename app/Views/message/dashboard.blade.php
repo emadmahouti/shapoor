@@ -66,7 +66,7 @@
                                v-on:click="selectUser({{$i}}, {{$data[$i]}})">
                                 <span>{% phoneNumberPattern({{($data[$i]->phone_number)}}) %}</span>
                                 <span><small>{{$data[$i]->name}}</small></span>
-                                <span><small>{{getSmartLastSeen($data[$i]->last_seen)}}</small></span>
+								<span><small>{{getSmartLastSeen($data[$i]->last_seen)}}</small></span>
                             </a>
                         @endfor
                     </div>
@@ -133,6 +133,7 @@
                     })
                         .then(function (response) {
                             self.messages = response.data.data;
+                            console.log(response.data);
                         })
                         .catch(function (error) {
 
