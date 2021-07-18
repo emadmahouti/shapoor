@@ -53,7 +53,6 @@ class MessageController extends Controller
         ]);
     }
 
-
     protected function message()
     {
 //        $trustUsers = UserTrust::with('user.message')
@@ -74,6 +73,7 @@ class MessageController extends Controller
                 if ($trustUser->trust_user_id = 1) {
                     $user = $trustUser->user;
 
+                    $data['user'] = $user;
                     $data['data'] = $user->limitMessages;
                 }
             }
