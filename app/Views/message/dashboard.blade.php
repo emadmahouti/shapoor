@@ -66,7 +66,7 @@
                                v-on:click="selectUser({{$i}}, {{$data[$i]}})">
                                 <span>{% phoneNumberPattern({{($data[$i]->phone_number)}}) %}</span>
                                 <span><small>{{$data[$i]->name}}</small></span>
-								<span><small :class="{'text-danger': {($data[$i]->last_seen)}} == -1}">{% calLastSeen({($data[$i]->last_seen)}}) %}</small></span>
+								<span :class="{'text-danger': {{getSmartLastSeen($data[$i]->last_seen)}} == -1 }"><small>{% calLastSeen({{getSmartLastSeen($data[$i]->last_seen)}}) %}</small></span>
                             </a>
                         @endfor
                     </div>
@@ -116,12 +116,14 @@
                     }
                 },
                 calLastSeen: function(state) {
+					console.log(state);
                     switch (state){
+						case 1:
+                            return "on"
                         case 0:
                         case -1:
-                            return "Off";
-                        case 1:
-                            return "On"
+                            return "off";
+                   
                     }
                 },
                 reload: function () {

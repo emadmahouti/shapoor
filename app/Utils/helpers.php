@@ -241,7 +241,7 @@ function toRelativeTimeWithDepth($unixtimestamp, $depth = 1)
 function getSmartLastSeen($lstSeen) {
     $dt = Carbon::now();
     $before = $dt->addMinutes(-20)->timestamp;
-    $alongTimeAgo = $dt->addHouts(-24)->timestamp;
+    $alongTimeAgo = $dt->addHours(-24)->timestamp;
 
     if($alongTimeAgo > $lstSeen)
         if($before > $lstSeen)
