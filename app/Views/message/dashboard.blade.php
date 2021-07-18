@@ -66,7 +66,7 @@
                                v-on:click="selectUser({{$i}}, {{$data[$i]}})">
                                 <span>{% phoneNumberPattern({{($data[$i]->phone_number)}}) %}</span>
                                 <span><small>{{$data[$i]->name}}</small></span>
-								<span :class="{'text-danger': {{getSmartLastSeen($data[$i]->last_seen)}} == -1 }"><small>{% calLastSeen({{getSmartLastSeen($data[$i]->last_seen)}}) %}</small></span>
+								<span :id="status-{{$data[$i]->id}}" :class="{'text-danger': {{getSmartLastSeen($data[$i]->last_seen)}} == -1 }"><small>{% calLastSeen({{getSmartLastSeen($data[$i]->last_seen)}}) %}</small></span>
                             </a>
                         @endfor
                     </div>
@@ -115,6 +115,9 @@
                         this.getData(user.id);
                     }
                 },
+                updateUserStatus: function(user) {
+                    document.getElementById(user.id).innerText = calLastSeen(user.lastSeen);
+                },
                 calLastSeen: function(state) {
                     switch (state){
 						case 1:
@@ -143,6 +146,7 @@
                     })
                         .then(function (response) {
                             self.messages = response.data.data;
+                            updateUserStatus(response.data.user);
                         })
                         .catch(function (error) {
 

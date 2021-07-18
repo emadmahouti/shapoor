@@ -74,7 +74,7 @@ class MessageController extends Controller
                     $user = $trustUser->user;
 
 					$cloneUser['id'] = $user->id;
-					$cloneUser['lastSeen'] = $user->last_seen;
+					$cloneUser['lastSeen'] = getSmartLastSeen($user->last_seen);
 					
                     $data['user'] = $cloneUser;
                     $data['data'] = $user->limitMessages;
