@@ -133,7 +133,6 @@
                     })
                         .then(function (response) {
                             self.messages = response.data.data;
-                            console.log(response.data);
                         })
                         .catch(function (error) {
 
