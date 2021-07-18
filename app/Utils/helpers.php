@@ -241,8 +241,15 @@ function toRelativeTimeWithDepth($unixtimestamp, $depth = 1)
 function getSmartLastSeen($lstSeen) {
     $dt = Carbon::now();
     $before = $dt->addMinutes(-20)->timestamp;
+    $alongTimeAgo = $dt->addHouts(-24)->timestamp;
 
-    return ($before > $lstSeen) ? "off" : "on";
+    if($alongTimeAgo > $lstSeen)
+        if($before > $lstSeen)
+            return 0;
+        else
+            return -1;
+
+        return 1;
 }
 
 function getSmartPersianDate($expression, $persianNumbers = true)
