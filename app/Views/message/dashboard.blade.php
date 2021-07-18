@@ -66,7 +66,7 @@
                                v-on:click="selectUser({{$i}}, {{$data[$i]}})">
                                 <span>{% phoneNumberPattern({{($data[$i]->phone_number)}}) %}</span>
                                 <span><small>{{$data[$i]->name}}</small></span>
-								<span><small :class="{'text-danger': lastSeen == -1}">{% humanLastSeen() %}</small></span>
+								<span><small :class="{'text-danger': {($data[$i]->last_seen)}} == -1}">{% calLastSeen({($data[$i]->last_seen)}}) %}</small></span>
                             </a>
                         @endfor
                     </div>
@@ -101,7 +101,6 @@
             el: '#app',
             delimiters: ['{%', '%}'],
             data: {
-                lastSeen: {{getSmartLastSeen($data[$i]->last_seen)}},
                 userIndex: -1,
                 messages: []
             },
@@ -109,22 +108,20 @@
                 document.getElementById('list-0').click();
             },
             mixins: [mixin],
-            computed: {
-                humanLastSeen: function() {
-                    switch (this.lastSeen){
-                        case 0:
-                        case -1:
-                            return "Off";
-                        case 1:
-                            return "On"
-                    }
-                }
-            },
             methods: {
                 selectUser: function (index, user) {
                     if (index !== this.userIndex) {
                         this.userIndex = index;
                         this.getData(user.id);
+                    }
+                },
+                calLastSeen: function(state) {
+                    switch (state){
+                        case 0:
+                        case -1:
+                            return "Off";
+                        case 1:
+                            return "On"
                     }
                 },
                 reload: function () {
